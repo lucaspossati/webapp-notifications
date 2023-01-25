@@ -1,0 +1,61 @@
+<app-title [title]=" id != null ? 'Notificação: ' + notificationToEdit?.assunto : 'Nova Notificação' "></app-title>
+
+<form [formGroup]="formNotification">
+  <div class="row">
+    <div class="form-group">
+      <label>Tipo</label>
+      <select class="form-select" formControlName="tipo">
+        <option *ngFor="let status of metadata.types" [value]="status.value">
+          {{ status.text }}
+        </option>
+      </select>
+    </div>
+    <div *ngIf="this.formNotification.get('tipo')?.value == 0">
+      <div class="form-group">
+        <label>E-mail (Destinatário)</label>
+        <input formControlName="emailDestinatario" type="text" class="form-control">
+      </div>
+      <div class="form-group">
+        <label>E-mail (Origem)</label>
+        <input formControlName="emailOrigem" type="text" class="form-control">
+      </div>
+    </div>
+    <div *ngIf="this.formNotification.get('tipo')?.value == 1">
+      <div class="form-group">
+        <label>Número (Destinatário)</label>
+        <input formControlName="numDestinatario" type="text" class="form-control"
+        mask="(00) 00000-0000">
+      </div>
+    </div>
+    
+    
+  </div>
+
+  <div class="row">
+    <div class="form-group">
+      <label>Assunto</label>
+      <input formControlName="assunto" type="text" class="form-control">
+    </div>
+    <div class="form-group">
+      <label>Mensagem</label>
+      <textarea formControlName="mensagem" rows="3" class="form-control"></textarea>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="form-group">
+      <label>Cliente</label>
+      <input formControlName="cliente" type="text" class="form-control">
+    </div>
+    <div class="form-group">
+      <label>Nome do usuário</label>
+      <input formControlName="nomeUsuario" type="text" class="form-control">
+    </div>
+  </div>
+
+  <div class="m-t-10 s-b d-flex">
+    <button type="button" class="btn btn-primary c-pointer" [routerLink]="['/']">Voltar</button>
+    <button type="button" class="btn btn-success c-pointer" (click)="save()" >{{id != null ? 'Atualizar' : 'Enviar'}}</button>
+  </div>
+ 
+</form>
