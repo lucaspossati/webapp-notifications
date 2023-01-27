@@ -42,30 +42,30 @@
   <thead class="thead-light">
     <tr>
       <th scope="col">Tipo</th>
-      <th scope="col">E-mail Destinatario</th>
-      <th scope="col">E-mail Origem</th>
-      <th scope="col">Número do Destinatario</th>
       <th scope="col">Assunto</th>
       <th scope="col">Cliente</th>
       <th scope="col">Nome do Usuário</th>
+      <th scope="col">E-mail Destinatario</th>
+      <th scope="col">E-mail Origem</th>
+      <th scope="col">Número do Destinatario</th>
       <th scope="col">Ações</th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let notification of notificationsList">
-      <td scope="row">{{notification.tipo}}</td>
-      <td>{{notification.emailDestinatario}}</td>
-      <td>{{notification.emailOrigem}}</td>
-      <td>{{notification.numDestinatario | mask: '(00) 00000-0000'}}</td>
+      <td scope="row">{{notification.nomeTipo}}</td>
       <td>{{notification.assunto}}</td>
       <td>{{notification.cliente}}</td>
       <td>{{notification.nomeUsuario}}</td>
+      <td>{{notification.emailDestinatario}}</td>
+      <td>{{notification.emailOrigem}}</td>
+      <td>{{notification.numDestinatario | mask: '(00) 00000-0000'}}</td>
       <td>
         <a class="c-pointer" (click)="delete(notification.id)">
-          <i class="bi bi-archive-fill red"></i>
+          <i class="bi bi-archive-fill text-danger"></i>
         </a>
         <a class="m-l-5 c-pointer" (click)="edit(notification.id)">
-          <i class="bi bi-pencil-fill blue"></i>
+          <i class="bi bi-pencil-fill text-info"></i>
         </a>
       </td>
     </tr>

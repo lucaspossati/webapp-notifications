@@ -14,7 +14,7 @@ import { NotificationService } from 'src/app/services/notification.service';
 })
 export class CreateNotificationComponent implements OnInit {
 
-  notificationToEdit: any;
+  notificationToEdit: Notification;
   formNotification!: FormGroup;
   id: string = '';
   obs:any;
@@ -50,7 +50,7 @@ export class CreateNotificationComponent implements OnInit {
 
   get(){
     this.notificationService.get(this.id).subscribe((resp: any) => {
-      this.notificationToEdit = resp;
+      this.notificationToEdit = resp.data;
 
       this.setValuesInForm(this.notificationToEdit);
     });

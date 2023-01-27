@@ -3,6 +3,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NotifierService } from 'angular-notifier/lib/services/notifier.service';
 import { notificationsTypes } from 'src/app/models/enums/notifications-type';
+import { BaseResponseList } from 'src/app/models/notification-model/baseResponseList';
 import { Notification } from 'src/app/models/notification-model/notification';
 import { NotificationService } from 'src/app/services/notification.service';
 
@@ -50,7 +51,7 @@ export class ListNotificationsComponent implements OnInit {
     }
 
     this.notificationService.getAll(filterCommand.selectedFilter).subscribe((resp: any) => {
-      this.notificationsList = resp;
+      this.notificationsList = resp.data;
     });
   }
 
